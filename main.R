@@ -46,7 +46,7 @@ if(!is.null(ctx$op.value('n_preds'))) n_preds <- as.numeric(ctx$op.value('n_pred
 span <- 0.75
 if(!is.null(ctx$op.value('span'))) span <- as.numeric(ctx$op.value('span'))
 operatorMode = "smooth"
-if(!is.null(ctx$op.value('mode'))) mode <- ctx$op.value('mode')
+if(!is.null(ctx$op.value('mode'))) mode <- as.character(ctx$op.value('mode'))
 
 df = ctx %>% 
   select(.ci, .ri, .x, .y)
@@ -66,10 +66,6 @@ if(!is.null(result$labels)){
   result = result %>% rename(!!mapname:=labels)
 }
   
-
 result %>%
   ctx$addNamespace() %>%
   ctx$save()
-
-
-
