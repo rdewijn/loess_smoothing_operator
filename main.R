@@ -27,8 +27,8 @@ loess.regress = function(df, span){
   df_out = data.frame(
     .ri = df$.ri[1],
     .ci = df$.ci[1],
-    .x = df$.x,
-    .y = df$.y,
+    xData = df$.x,
+    yData = df$.y,
     yFit = predict(m),
     yRes = resid(m)
   )
@@ -39,16 +39,14 @@ loess.regress = function(df, span){
   
 }
 
-
-
 ctx = tercenCtx()
 
 n_preds <- 1000
 if(!is.null(ctx$op.value('n_preds'))) n_preds <- as.numeric(ctx$op.value('n_preds'))
 span <- 0.75
 if(!is.null(ctx$op.value('span'))) span <- as.numeric(ctx$op.value('span'))
-operatorMode = "regress"
-if(!is.null(ctx$op.value('mode'))) mode <- as.numeric(ctx$op.value('mode'))
+operatorMode = "smooth"
+if(!is.null(ctx$op.value('mode'))) mode <- ctx$op.value('mode')
 
 df = ctx %>% 
   select(.ci, .ri, .x, .y)
