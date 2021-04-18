@@ -6,6 +6,16 @@
   "urls": ["https://github.com/tercen/loess_smoothing_operator"],
   "properties": [
     {
+    "kind": "EnumeratedProperty",
+    "name": "mode",
+    "defaultValue": "smooth",
+    "values": [
+      "smooth",
+      "regress"
+    ],
+    "description": "operator mode"
+  },
+    {
     "kind": "DoubleProperty",
     "name": "n_preds",
     "defaultValue": 1000,
